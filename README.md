@@ -16,6 +16,12 @@ Current available tags:
 - 1.0
 - 1.0-fonts
 
-## wkhtmltopdf and wkhtmltoimage
+## noto fonts
 
-The images with tags {version}-fonts will have noto fonts installed in `/usr/share/fonts/Noto-unhinted`
+The images with tags {version}-fonts will have noto fonts installed in `/usr/share/fonts/noto`
+
+## usage
+
+```
+docker run --rm -v /tmp:/tmp hyperjiang/wkhtmltox:1.0 wkhtmltopdf https://www.google.com/ /tmp/g.pdf
+```
