@@ -1,18 +1,20 @@
-FROM launcher.gcr.io/google/debian9:latest
+FROM alpine:3.8
 
-# build wkhtmltox
-ENV WKHTMLTOX_VER 0.12.5
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+    && apk update
 
-RUN apt-get update && \
-    apt-get install -y -q --no-install-recommends build-essential wget
+# install wkhtmltopdf from `testing` repository
+RUN apk add --no-cache qt5-qtbase-dev fontconfig wkhtmltopdf
 
-RUN wget -q -P /tmp/temp/ https://downloads.wkhtmltopdf.org/0.12/${WKHTMLTOX_VER}/wkhtmltox_${WKHTMLTOX_VER}-1.stretch_amd64.deb
-
-RUN apt-get install -y ca-certificates libxrender1 libxt6 libxtst6 fontconfig xfonts-75dpi xfonts-base libjpeg62-turbo
-RUN dpkg -i /tmp/temp/wkhtmltox_${WKHTMLTOX_VER}-1.stretch_amd64.deb > /dev/null
-
-# clean up temp files
-RUN rm -rf /var/lib/apt/lists/* /tmp/temp/
+# install noto fonts
+RUN apk add --no-cache zip unzip wget
+RUN wget -q -P /tmp/temp/ https://noto-website.storage.googleapis.com/pkgs/Noto-unhinted.zip
+RUN mkdir -p /usr/share/fonts/noto \
+    && unzip -qq /tmp/temp/Noto-unhinted.zip -d /usr/share/fonts/noto/
+RUN fc-cache -fv
 
 # check whether it's installed successfully
 RUN wkhtmltopdf --version
+
+# remove temp files
+RUN rm -rf /var/cache/apk/* /tmp/temp/

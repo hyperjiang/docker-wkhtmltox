@@ -15,6 +15,7 @@ Current available tags:
 - lastest
 - 1.0
 - 1.0-fonts
+- 1.0-alpine
 
 ## noto fonts
 
