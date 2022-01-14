@@ -1,4 +1,4 @@
-FROM launcher.gcr.io/google/debian9:latest
+FROM debian:stretch-slim
 
 # build wkhtmltox
 ENV WKHTMLTOX_VER 0.12.6
