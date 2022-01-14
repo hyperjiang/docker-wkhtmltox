@@ -7,14 +7,8 @@ Docker image which contains:
 ## pull the docker image
 
 ```
-docker pull hyperjiang/wkhtmltox
+docker pull registry.cn-hangzhou.aliyuncs.com/huolala/wkhtmltox:1.0
 ```
-
-Current available tags:
-
-- lastest
-- 1.0
-- 1.0-fonts
 
 ## noto fonts
 
@@ -23,5 +17,5 @@ The images with tags {version}-fonts will have noto fonts installed in `/usr/sha
 ## usage
 
 ```
-docker run --rm -v /tmp:/tmp hyperjiang/wkhtmltox:1.0 wkhtmltopdf https://www.google.com/ /tmp/g.pdf
+docker run --rm -v /tmp:/tmp registry.cn-hangzhou.aliyuncs.com/huolala/wkhtmltox:1.0 wkhtmltopdf https://www.google.com/ /tmp/g.pdf
 ```

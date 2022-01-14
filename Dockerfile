@@ -1,7 +1,7 @@
 FROM launcher.gcr.io/google/debian9:latest
 
 # build wkhtmltox
-ENV WKHTMLTOX_VER 0.12.5
+ENV WKHTMLTOX_VER 0.12.6
 
 RUN apt-get update && \
     apt-get install -y -q --no-install-recommends build-essential wget
